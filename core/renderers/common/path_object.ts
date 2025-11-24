@@ -230,6 +230,7 @@ export class PathObject implements IPathObject {
       // transform are correct.
       previousHighlight.setAttribute('d', connectionPath);
       previousHighlight.setAttribute('transform', transformation);
+      this.addValidConnectionHighlightClassName(connection, previousHighlight);
       return previousHighlight;
     }
 
@@ -244,8 +245,21 @@ export class PathObject implements IPathObject {
       },
       this.svgRoot,
     );
+    this.addValidConnectionHighlightClassName(connection, highlight);
     this.connectionHighlights.set(connection, highlight);
     return highlight;
+  }
+
+  addValidConnectionHighlightClassName(
+    connection: RenderedConnection,
+    highlight: SVGElement,
+  ) {
+    highlight.classList.remove('validConnection', 'invalidConnection');
+    if (connection.isValid === true) {
+      highlight.classList.add('validConnection');
+    } else if (connection.isValid === false) {
+      highlight.classList.add('invalidConnection');
+    }
   }
 
   /**

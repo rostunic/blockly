@@ -101,6 +101,8 @@ export class ConstantProvider extends BaseConstantProvider {
 
   /** The selected glow colour. */
   SELECTED_GLOW_COLOUR = '#fff200';
+  SELECTED_VALID_GLOW_COLOUR = '#3f5';
+  SELECTED_INVALID_GLOW_COLOUR = '#f55';
 
   /** The size of the selected glow. */
   SELECTED_GLOW_SIZE = 0.5;
@@ -887,6 +889,14 @@ export class ConstantProvider extends BaseConstantProvider {
       // Connection highlight.
       `${selector} .blocklyHighlightedConnectionPath {`,
       `stroke: ${this.SELECTED_GLOW_COLOUR};`,
+      `}`,
+
+      `${selector} .blocklyHighlightedConnectionPath.validConnection {`,
+      `stroke: ${this.SELECTED_VALID_GLOW_COLOUR};`,
+      `}`,
+
+      `${selector} .blocklyHighlightedConnectionPath.invalidConnection {`,
+      `stroke: ${this.SELECTED_INVALID_GLOW_COLOUR};`,
       `}`,
 
       // Disabled outline paths.

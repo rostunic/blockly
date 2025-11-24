@@ -48,6 +48,26 @@ export class ConnectionChecker implements IConnectionChecker {
   }
 
   /**
+   * Asynchronously check whether the current connection can connect with the
+   * target connection.
+   *
+   * @param _a Connection to check compatibility with.
+   * @param _b Connection to check compatibility with.
+   * @param _isDragging True if the connection is being made by dragging a block.
+   * @param _opt_distance The max allowable distance between the connections for
+   *     drag checks.
+   * @returns A promise that resolves to whether the connection is legal.
+   */
+  canConnectAsync(
+    _a: Connection | null,
+    _b: Connection | null,
+    _isDragging: boolean,
+    _opt_distance?: number,
+  ): Promise<boolean> {
+    return Promise.resolve(true);
+  }
+
+  /**
    * Checks whether the current connection can connect with the target
    * connection, and return an error code if there are problems.
    *

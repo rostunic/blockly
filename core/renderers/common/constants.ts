@@ -1207,6 +1207,15 @@ export class ConstantProvider {
         `stroke: #fc3;`,
       `}`,
 
+      `${selector} .blocklyHighlightedConnectionPath.validConnection {`,
+        `stroke: #3f5;`,
+        `stroke-width: 4px;`,
+      `}`,
+      `${selector} .blocklyHighlightedConnectionPath.invalidConnection {`,
+        `stroke: #f55;`,
+        `stroke-width: 4px;`,
+      `}`,
+
       // Replaceable highlight.
       `${selector} .blocklyReplaceable .blocklyPath {`,
         `fill-opacity: .5;`,

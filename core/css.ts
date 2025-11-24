@@ -150,6 +150,16 @@ let content = `
   stroke: #fc3;
   stroke-width: 4px;
 }
+.blocklyHighlightedConnectionPath.validConnection {
+  fill: none;
+  stroke: #3f5;
+  stroke-width: 4px;
+}
+.blocklyHighlightedConnectionPath.invalidConnection {
+  fill: none;
+  stroke: #f33;
+  stroke-width: 4px;
+}
 
 .blocklyPathLight {
   fill: none;

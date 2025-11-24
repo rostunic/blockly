@@ -19,6 +19,7 @@ export class Connection extends Measurable {
   shape: Shape;
   isDynamicShape: boolean;
   highlighted: boolean;
+  isValid: boolean | null;
 
   /**
    * @param constants The rendering constants provider.
@@ -37,5 +38,6 @@ export class Connection extends Measurable {
     this.isDynamicShape = 'isDynamic' in this.shape && this.shape.isDynamic;
 
     this.highlighted = connectionModel.isHighlighted();
+    this.isValid = connectionModel.isValid;
   }
 }

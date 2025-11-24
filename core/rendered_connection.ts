@@ -49,6 +49,8 @@ export class RenderedConnection
 
   /** Connection this connection connects to.  Null if not connected. */
   override targetConnection: RenderedConnection | null = null;
+  /** Whether or not this connection is proven to be valid. */
+  isValid: boolean | null = null;
 
   /**
    * @param source The block establishing this connection.

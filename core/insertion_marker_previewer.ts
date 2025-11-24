@@ -53,6 +53,7 @@ export class InsertionMarkerPreviewer implements IConnectionPreviewer {
       replacedBlock.fadeForReplacement(true);
       if (this.workspace.getRenderer().shouldHighlightConnection(staticConn)) {
         staticConn.highlight();
+        this.addValidMarkerOnHighlight(staticConn, draggedConn);
         this.staticConn = staticConn;
       }
     } finally {
@@ -89,6 +90,8 @@ export class InsertionMarkerPreviewer implements IConnectionPreviewer {
       }
 
       if (this.workspace.getRenderer().shouldHighlightConnection(staticConn)) {
+        staticConn.isValid = null;
+        this.addValidMarkerOnHighlight(staticConn, draggedConn);
         staticConn.highlight();
       }
 
@@ -97,6 +100,22 @@ export class InsertionMarkerPreviewer implements IConnectionPreviewer {
     } finally {
       eventUtils.enable();
     }
+  }
+
+  private addValidMarkerOnHighlight(
+    staticConn: RenderedConnection,
+    draggedConn: RenderedConnection,
+  ) {
+    staticConn
+      .getConnectionChecker()
+      .canConnectAsync(draggedConn, staticConn, true)
+      .then((canConnect) => {
+        staticConn.isValid = canConnect;
+        const markerConnection = this.markerConn;
+        if (markerConnection) {
+          renderManagement.queueRender(staticConn.getSourceBlock());
+        }
+      });
   }
 
   private shouldUseMarkerPreview(
