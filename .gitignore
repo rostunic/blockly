@@ -9,6 +9,10 @@ build-debug.log
 *.komodoproject
 /nbproject/private/
 tsdoc-metadata.json
+*.js
+*.js.map
+*.ts.map
+*.d.ts
 
 tests/compile/main_compressed.js
 tests/compile/main_compressed.js.map
@@ -20,3 +24,4 @@ chromedriver
 build/
 dist/
 temp/
+.idea/
